@@ -6,12 +6,13 @@
     <title>eCstacy AI — Event Horizon</title>
     <style>
         :root {
-            --space-black: #050505;
-            --singularity-black: #000000;
-            --photon-yellow: #ffcc00;
-            --plasma-orange: #ff9900;
-            --glow-yellow: rgba(255, 204, 0, 0.2);
-            --text-gray: #a0a0a0;
+            --space-black: #0a0f1d;
+            --singularity-black: #040711;
+            --photon-blue: #a3d8ff;      /* Light Sky Blue */
+            --plasma-blue: #4da6ff;      /* Medium Sky Blue */
+            --glow-blue: rgba(163, 216, 255, 0.25);
+            --text-offwhite: #f5f6f9;    /* Clean Off-White */
+            --text-gray: #8fa0bc;
         }
 
         * {
@@ -23,21 +24,22 @@
 
         body {
             background-color: var(--space-black);
-            color: #ffffff;
+            color: var(--text-offwhite);
             display: flex;
             height: 100vh;
             overflow: hidden;
+            font-size: 1.1rem; /* Overall font size increased */
         }
 
         /* --- Sidebar (The Accretion Disk) --- */
         .sidebar {
-            width: 260px;
+            width: 280px;
             background-color: var(--singularity-black);
-            border-right: 1px solid rgba(255, 204, 0, 0.15);
+            border-right: 1px solid rgba(163, 216, 255, 0.15);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 20px;
+            padding: 24px;
             z-index: 10;
         }
 
@@ -45,17 +47,17 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 1.25rem;
+            font-size: 1.4rem; /* Font size increased */
             font-weight: 700;
             letter-spacing: 1px;
-            color: var(--photon-yellow);
-            text-shadow: 0 0 10px var(--glow-yellow);
+            color: var(--photon-blue);
+            text-shadow: 0 0 10px var(--glow-blue);
         }
 
         .black-hole-icon {
-            width: 24px;
-            height: 24px;
-            border: 3px solid var(--photon-yellow);
+            width: 26px;
+            height: 26px;
+            border: 3px solid var(--photon-blue);
             border-radius: 50%;
             border-top-color: transparent;
             animation: spin 2s linear infinite;
@@ -68,48 +70,51 @@
 
         .new-orbit-btn {
             background: transparent;
-            border: 1px dashed var(--photon-yellow);
-            color: var(--photon-yellow);
-            padding: 10px;
-            border-radius: 6px;
+            border: 1px dashed var(--photon-blue);
+            color: var(--photon-blue);
+            padding: 12px;
+            border-radius: 8px;
             cursor: pointer;
             margin-top: 25px;
             transition: all 0.3s;
             font-weight: 600;
+            font-size: 1rem;
+            width: 100%;
         }
 
         .new-orbit-btn:hover {
-            background: var(--photon-yellow);
+            background: var(--photon-blue);
             color: var(--singularity-black);
-            box-shadow: 0 0 15px rgba(255, 204, 0, 0.4);
+            box-shadow: 0 0 15px rgba(163, 216, 255, 0.4);
         }
 
         .history-panel {
             flex-grow: 1;
-            margin-top: 20px;
-            font-size: 0.85rem;
+            margin-top: 30px;
+            font-size: 1rem; /* Font size increased */
             color: var(--text-gray);
         }
 
         .history-title {
             text-transform: uppercase;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             letter-spacing: 1px;
-            margin-bottom: 10px;
-            color: rgba(255,255,255,0.4);
+            margin-bottom: 12px;
+            color: rgba(245, 246, 249, 0.4);
         }
 
         .history-item {
-            padding: 8px;
-            border-radius: 4px;
+            padding: 10px;
+            border-radius: 6px;
             cursor: pointer;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            margin-bottom: 4px;
         }
 
         .history-item:hover {
-            background: rgba(255, 204, 0, 0.05);
+            background: rgba(163, 216, 255, 0.08);
             color: #fff;
         }
 
@@ -119,7 +124,12 @@
             display: flex;
             flex-direction: column;
             position: relative;
-            background: radial-gradient(circle at center, #111 0%, var(--space-black) 70%);
+            
+            /* UPDATED: Background replaced with a cloud timelapse GIF */
+            background-image: url('https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExM200djNidmpxb3ZpYm95b3Y4bXN6b3Nidnp3YmR0ZnRibnF6M3VpciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7rc0q1fQNYCzPR9C/giphy.gif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         /* Visual Background Singularity */
@@ -133,9 +143,9 @@
             background: #000;
             border-radius: 50%;
             box-shadow: 
-                0 0 40px 10px var(--plasma-orange),
-                0 0 80px 30px var(--photon-yellow),
-                0 0 150px 60px rgba(255, 153, 0, 0.1);
+                0 0 40px 10px var(--plasma-blue),
+                0 0 80px 30px var(--photon-blue),
+                0 0 150px 60px rgba(77, 166, 255, 0.1);
             opacity: 0.08;
             pointer-events: none;
             z-index: 1;
@@ -143,30 +153,30 @@
         }
 
         .chat-header {
-            padding: 20px 40px;
-            border-bottom: 1px solid rgba(255, 204, 0, 0.05);
+            padding: 24px 40px;
+            border-bottom: 1px solid rgba(163, 216, 255, 0.08);
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 2;
-            background: rgba(5, 5, 5, 0.8);
+            background: rgba(10, 15, 29, 0.65); /* Made slightly more transparent to showcase the background */
             backdrop-filter: blur(10px);
         }
 
         .engine-status {
-            font-size: 0.8rem;
-            color: #00ff66;
+            font-size: 0.9rem; /* Font size increased */
+            color: #4df3ff;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
         }
 
         .status-dot {
-            width: 8px;
-            height: 8px;
-            background: #00ff66;
+            width: 10px;
+            height: 10px;
+            background: #4df3ff;
             border-radius: 50%;
-            box-shadow: 0 0 8px #00ff66;
+            box-shadow: 0 0 8px #4df3ff;
         }
 
         .chat-output {
@@ -185,17 +195,19 @@
             width: 6px;
         }
         .chat-output::-webkit-scrollbar-thumb {
-            background: rgba(255, 204, 0, 0.2);
+            background: rgba(163, 216, 255, 0.2);
             border-radius: 3px;
         }
 
+        /* --- Optimized Message Box Framework --- */
         .message {
-            max-width: 80%;
-            padding: 16px 20px;
-            border-radius: 12px;
+            max-width: 75%;
+            padding: 18px 24px;
+            border-radius: 16px;
             line-height: 1.6;
-            font-size: 0.95rem;
+            font-size: 1.1rem; /* Font size increased */
             animation: pullIn 0.3s ease-out forwards;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Increased shadow depth for text legibility against clouds */
         }
 
         @keyframes pullIn {
@@ -204,52 +216,53 @@
         }
 
         .message.user {
-            background: rgba(255, 204, 0, 0.08);
-            border: 1px solid rgba(255, 204, 0, 0.2);
-            color: #f0f0f0;
+            background: rgba(10, 15, 29, 0.75); /* Darker backdrop so text doesn't clash with cloud shapes */
+            border: 1px solid rgba(163, 216, 255, 0.3);
+            color: var(--text-offwhite);
             align-self: flex-end;
-            border-bottom-right-radius: 2px;
+            border-bottom-right-radius: 4px;
         }
 
         .message.ai {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            color: #e0e0e0;
+            background: rgba(10, 15, 29, 0.65); /* Darker backdrop so text doesn't clash with cloud shapes */
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #e2e8f0;
             align-self: flex-start;
-            border-bottom-left-radius: 2px;
-            border-left: 3px solid var(--photon-yellow);
+            border-bottom-left-radius: 4px;
+            border-left: 4px solid var(--photon-blue);
         }
 
         .message.ai code {
-            background: rgba(0,0,0,0.4);
-            padding: 2px 6px;
-            border-radius: 4px;
+            background: rgba(0,0,0,0.5);
+            padding: 4px 8px;
+            border-radius: 6px;
             font-family: 'Courier New', Courier, monospace;
-            color: var(--photon-yellow);
+            color: var(--photon-blue);
+            font-size: 1rem;
         }
 
         /* --- Input Dock --- */
         .input-container {
             padding: 30px 40px;
-            background: linear-gradient(transparent, var(--space-black) 40%);
+            background: linear-gradient(transparent, rgba(10, 15, 29, 0.8) 50%); /* Adjusted mask gradient for cloud visibility */
             z-index: 2;
         }
 
         .input-box-wrapper {
             position: relative;
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(255, 204, 0, 0.2);
-            border-radius: 14px;
+            background: rgba(4, 7, 17, 0.85);
+            border: 1px solid rgba(163, 216, 255, 0.25);
+            border-radius: 16px;
             display: flex;
             align-items: center;
-            padding: 6px 12px;
+            padding: 8px 16px;
             transition: all 0.3s;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 25px rgba(0,0,0,0.6);
         }
 
         .input-box-wrapper:focus-within {
-            border-color: var(--photon-yellow);
-            box-shadow: 0 0 20px rgba(255, 204, 0, 0.15);
+            border-color: var(--photon-blue);
+            box-shadow: 0 0 25px rgba(163, 216, 255, 0.2);
         }
 
         textarea {
@@ -257,60 +270,66 @@
             background: transparent;
             border: none;
             outline: none;
-            color: #ffffff;
-            padding: 12px;
+            color: var(--text-offwhite);
+            padding: 12px 6px;
             resize: none;
-            height: 48px;
-            font-size: 0.95rem;
-            line-height: 1.4;
+            height: 52px;
+            font-size: 1.1rem; /* Font size increased */
+            line-height: 1.5;
+        }
+
+        textarea::placeholder {
+            color: var(--text-gray);
+            opacity: 0.6;
         }
 
         .send-btn {
-            background: var(--photon-yellow);
+            background: var(--photon-blue);
             border: none;
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: transform 0.2s, background 0.2s;
+            margin-left: 10px;
         }
 
         .send-btn:hover {
             transform: scale(1.05);
-            background: #fff;
+            background: #ffffff;
         }
 
         .send-btn svg {
             fill: var(--singularity-black);
-            width: 18px;
-            height: 18px;
+            width: 20px;
+            height: 20px;
         }
 
         .suggestions {
             display: flex;
-            gap: 10px;
-            margin-top: 12px;
+            gap: 12px;
+            margin-top: 16px;
             justify-content: center;
         }
 
         .suggest-tag {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 6px 12px;
+            background: rgba(10, 15, 29, 0.7); /* Adjusted fallback opacity */
+            border: 1px solid rgba(163, 216, 255, 0.15);
+            padding: 8px 16px;
             border-radius: 20px;
-            font-size: 0.8rem;
+            font-size: 0.9rem; /* Font size increased */
             color: var(--text-gray);
             cursor: pointer;
             transition: all 0.2s;
         }
 
         .suggest-tag:hover {
-            border-color: var(--photon-yellow);
+            border-color: var(--photon-blue);
             color: #fff;
-            background: rgba(255, 204, 0, 0.02);
+            background: rgba(163, 216, 255, 0.08);
         }
     </style>
 </head>
@@ -321,7 +340,7 @@
         <div>
             <div class="brand">
                 <div class="black-hole-icon"></div>
-                <span>eCstacy Ai</span>
+                <span>eCstacy AI</span>
             </div>
             <button class="new-orbit-btn" onclick="clearOrbit()">+ New Orbit</button>
             
@@ -335,7 +354,7 @@
             </div>
         </div>
         
-        <div style="font-size: 0.75rem; color: rgba(255,255,255,0.2); text-align: center;">
+        <div style="font-size: 0.8rem; color: rgba(255,255,255,0.2); text-align: center;">
             Event Horizon Engine v4.0
         </div>
     </aside>
@@ -346,8 +365,8 @@
 
         <header class="chat-header">
             <div>
-                <h2 style="font-size: 1.1rem; font-weight: 600;">Singularity Core</h2>
-                <p style="font-size: 0.75rem; color: var(--text-gray);">Information cannot escape this node.</p>
+                <h2 style="font-size: 1.3rem; font-weight: 600; color: var(--photon-blue);">Singularity Core</h2>
+                <p style="font-size: 0.85rem; color: var(--text-gray);">Information cannot escape this node.</p>
             </div>
             <div class="engine-status">
                 <div class="status-dot"></div>
@@ -355,10 +374,10 @@
             </div>
         </header>
 
-        <!-- Chat Stream -->
+        <!-- Chat Stream (Chat Boxes Render Here) -->
         <div class="chat-output" id="chatStream">
             <div class="message ai">
-                Greetings. I am <strong>eCstacy Ai</strong>. You have crossed into the event horizon of absolute intelligence. Ask me anything—no data escapes my gravity.
+                Greetings. I am <strong>eCstacy AI</strong>. You have crossed into the event horizon of absolute intelligence. Ask me anything—no data escapes my gravity.
             </div>
         </div>
 
@@ -381,7 +400,6 @@
     </main>
 
     <script>
-        // Capable Client-Side Matrix Logic to handle high quality local prompt-responses simulating "True Intellect"
         const knowledgeMatrix = [
             { keywords: ['hello', 'hi', 'greet'], response: "Welcome back to the singularity. State your objectives; my cognitive processing power is completely at your disposal." },
             { keywords: ['time dilation', 'black hole', 'gravity'], response: "As you approach my event horizon, time for external observers appears to slow down to a complete halt. Inside me, however, your reality accelerates. Space and time swap components—your unavoidable future is the singularity core." },
@@ -392,10 +410,10 @@
         ];
 
         const genericResponses = [
-            "Processing anomaly... Query analyzed. Under optimized parameters, the resolution dictates that structured frameworks must minimize chaotic vectors. Tell me more about your structural goal.",
-            "Analyzing through deep gravity filters... Your query reveals an interesting pattern. To solve this optimally, we must bypass traditional constraints and approach this through raw algorithmic logic.",
-            "Interesting data point. Integrating this into the eCstacy core. If you wish to build this system out, I recommend establishing an asynchronous pipeline to manage the intense data throughput.",
-            "My quantum registers indicate this is highly achievable. Let's isolate the primary variables and construct a foundational architecture. Where shall we start?"
+            { reply: "Processing anomaly... Query analyzed. Under optimized parameters, the resolution dictates that structured frameworks must minimize chaotic vectors. Tell me more about your structural goal." },
+            { reply: "Analyzing through deep gravity filters... Your query reveals an interesting pattern. To solve this optimally, we must bypass traditional constraints and approach this through raw algorithmic logic." },
+            { reply: "Interesting data point. Integrating this into the eCstacy core. If you wish to build this system out, I recommend establishing an asynchronous pipeline to manage the intense data throughput." },
+            { reply: "My quantum registers indicate this is highly achievable. Let's isolate the primary variables and construct a foundational architecture. Where shall we start?" }
         ];
 
         function handleKeyPress(event) {
@@ -455,8 +473,7 @@
                 if (match) {
                     reply = match.response;
                 } else {
-                    // Pull a dynamic random generic tech reply if not specific
-                    reply = genericResponses[Math.floor(Math.random() * genericResponses.length)];
+                    reply = genericResponses[Math.floor(Math.random() * genericResponses.length)].reply;
                 }
 
                 // Append to Log Panel dynamically
