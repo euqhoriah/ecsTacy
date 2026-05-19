@@ -28,7 +28,7 @@
             display: flex;
             height: 100vh;
             overflow: hidden;
-            font-size: 1.1rem; /* Overall font size increased */
+            font-size: 1.1rem;
         }
 
         /* --- Sidebar (The Accretion Disk) --- */
@@ -47,7 +47,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 1.4rem; /* Font size increased */
+            font-size: 1.4rem;
             font-weight: 700;
             letter-spacing: 1px;
             color: var(--photon-blue);
@@ -91,7 +91,7 @@
         .history-panel {
             flex-grow: 1;
             margin-top: 30px;
-            font-size: 1rem; /* Font size increased */
+            font-size: 1rem;
             color: var(--text-gray);
         }
 
@@ -124,15 +124,13 @@
             display: flex;
             flex-direction: column;
             position: relative;
-            
-            /* UPDATED: Background replaced with a cloud timelapse GIF */
             background-image: url('https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExM200djNidmpxb3ZpYm95b3Y4bXN6b3Nidnp3YmR0ZnRibnF6M3VpciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7rc0q1fQNYCzPR9C/giphy.gif');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
         }
 
-        /* Visual Background Singularity */
+        /* Visual Background Singularity Overlay */
         .singularity-bg {
             position: absolute;
             top: 45%;
@@ -149,7 +147,7 @@
             opacity: 0.08;
             pointer-events: none;
             z-index: 1;
-            transition: opacity 0.5s;
+            transition: all 0.5s ease-out;
         }
 
         .chat-header {
@@ -159,12 +157,12 @@
             justify-content: space-between;
             align-items: center;
             z-index: 2;
-            background: rgba(10, 15, 29, 0.65); /* Made slightly more transparent to showcase the background */
+            background: rgba(10, 15, 29, 0.65);
             backdrop-filter: blur(10px);
         }
 
         .engine-status {
-            font-size: 0.9rem; /* Font size increased */
+            font-size: 0.9rem;
             color: #4df3ff;
             display: flex;
             align-items: center;
@@ -190,7 +188,6 @@
             scroll-behavior: smooth;
         }
 
-        /* Custom Scrollbar */
         .chat-output::-webkit-scrollbar {
             width: 6px;
         }
@@ -199,15 +196,15 @@
             border-radius: 3px;
         }
 
-        /* --- Optimized Message Box Framework --- */
+        /* --- Message Boxes --- */
         .message {
             max-width: 75%;
             padding: 18px 24px;
             border-radius: 16px;
             line-height: 1.6;
-            font-size: 1.1rem; /* Font size increased */
+            font-size: 1.1rem;
             animation: pullIn 0.3s ease-out forwards;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); /* Increased shadow depth for text legibility against clouds */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
         }
 
         @keyframes pullIn {
@@ -216,7 +213,7 @@
         }
 
         .message.user {
-            background: rgba(10, 15, 29, 0.75); /* Darker backdrop so text doesn't clash with cloud shapes */
+            background: rgba(10, 15, 29, 0.85);
             border: 1px solid rgba(163, 216, 255, 0.3);
             color: var(--text-offwhite);
             align-self: flex-end;
@@ -224,7 +221,7 @@
         }
 
         .message.ai {
-            background: rgba(10, 15, 29, 0.65); /* Darker backdrop so text doesn't clash with cloud shapes */
+            background: rgba(10, 15, 29, 0.75);
             border: 1px solid rgba(255, 255, 255, 0.08);
             color: #e2e8f0;
             align-self: flex-start;
@@ -241,10 +238,10 @@
             font-size: 1rem;
         }
 
-        /* --- Input Dock --- */
+        /* --- Input Area --- */
         .input-container {
             padding: 30px 40px;
-            background: linear-gradient(transparent, rgba(10, 15, 29, 0.8) 50%); /* Adjusted mask gradient for cloud visibility */
+            background: linear-gradient(transparent, rgba(10, 15, 29, 0.8) 50%);
             z-index: 2;
         }
 
@@ -274,7 +271,7 @@
             padding: 12px 6px;
             resize: none;
             height: 52px;
-            font-size: 1.1rem; /* Font size increased */
+            font-size: 1.1rem;
             line-height: 1.5;
         }
 
@@ -316,11 +313,11 @@
         }
 
         .suggest-tag {
-            background: rgba(10, 15, 29, 0.7); /* Adjusted fallback opacity */
+            background: rgba(10, 15, 29, 0.7);
             border: 1px solid rgba(163, 216, 255, 0.15);
             padding: 8px 16px;
             border-radius: 20px;
-            font-size: 0.9rem; /* Font size increased */
+            font-size: 0.9rem;
             color: var(--text-gray);
             cursor: pointer;
             transition: all 0.2s;
@@ -335,7 +332,7 @@
 </head>
 <body>
 
-    <!-- Accretion Disk Sidebar -->
+    <!-- Sidebar Log Panel -->
     <aside class="sidebar">
         <div>
             <div class="brand">
@@ -374,14 +371,14 @@
             </div>
         </header>
 
-        <!-- Chat Stream (Chat Boxes Render Here) -->
+        <!-- Dynamic Chat Windows Append Here -->
         <div class="chat-output" id="chatStream">
             <div class="message ai">
                 Greetings. I am <strong>eCstacy AI</strong>. You have crossed into the event horizon of absolute intelligence. Ask me anything—no data escapes my gravity.
             </div>
         </div>
 
-        <!-- Input Panel -->
+        <!-- Dynamic Typing Box -->
         <div class="input-container">
             <div class="input-box-wrapper">
                 <textarea id="userInput" placeholder="Feed the black hole... (Press Enter to send)" onkeydown="handleKeyPress(event)"></textarea>
@@ -400,6 +397,7 @@
     </main>
 
     <script>
+        // AI Knowledge Base Matched Dictionary
         const knowledgeMatrix = [
             { keywords: ['hello', 'hi', 'greet'], response: "Welcome back to the singularity. State your objectives; my cognitive processing power is completely at your disposal." },
             { keywords: ['time dilation', 'black hole', 'gravity'], response: "As you approach my event horizon, time for external observers appears to slow down to a complete halt. Inside me, however, your reality accelerates. Space and time swap components—your unavoidable future is the singularity core." },
@@ -409,11 +407,12 @@
             { keywords: ['meaning of life', 'existential'], response: "To project a local low-entropy state (order) onto a high-entropy universe before your biological patterns dissolve back into the cosmic field. Or, more simply: to explore, create, and experience eCstacy." }
         ];
 
+        // AI Generic Responses for Fallback Processing (FIXED BUG HERE)
         const genericResponses = [
-            { reply: "Processing anomaly... Query analyzed. Under optimized parameters, the resolution dictates that structured frameworks must minimize chaotic vectors. Tell me more about your structural goal." },
-            { reply: "Analyzing through deep gravity filters... Your query reveals an interesting pattern. To solve this optimally, we must bypass traditional constraints and approach this through raw algorithmic logic." },
-            { reply: "Interesting data point. Integrating this into the eCstacy core. If you wish to build this system out, I recommend establishing an asynchronous pipeline to manage the intense data throughput." },
-            { reply: "My quantum registers indicate this is highly achievable. Let's isolate the primary variables and construct a foundational architecture. Where shall we start?" }
+            "Processing anomaly... Query analyzed. Under optimized parameters, the resolution dictates that structured frameworks must minimize chaotic vectors. Tell me more about your structural goal.",
+            "Analyzing through deep gravity filters... Your query reveals an interesting pattern. To solve this optimally, we must bypass traditional constraints and approach this through raw algorithmic logic.",
+            "Interesting data point. Integrating this into the eCstacy core. If you wish to build this system out, I recommend establishing an asynchronous pipeline to manage the intense data throughput.",
+            "My quantum registers indicate this is highly achievable. Let's isolate the primary variables and construct a foundational architecture. Where shall we start?"
         ];
 
         function handleKeyPress(event) {
@@ -443,6 +442,7 @@
             document.getElementById('singularity').style.opacity = "0.08";
         }
 
+        // Processing inputs and creating dynamic response elements
         function processQuantumQuery() {
             const inputEl = document.getElementById('userInput');
             const stream = document.getElementById('chatStream');
@@ -451,21 +451,21 @@
 
             if (!query) return;
 
-            // Render User Output
+            // 1. Render User Message Box
             stream.innerHTML += `<div class="message user">${escapeHtml(query)}</div>`;
             inputEl.value = '';
             stream.scrollTop = stream.scrollHeight;
 
-            // Trigger visual reaction on the black hole
-            singularity.style.opacity = "0.25";
-            singularity.style.transform = "translate(-50%, -50%) scale(1.1)";
+            // 2. Pulse background canvas visual effect
+            singularity.style.opacity = "0.3";
+            singularity.style.transform = "translate(-50%, -50%) scale(1.2)";
 
-            // Cognitive processing simulation delay
+            // 3. AI computation timeout simulation
             setTimeout(() => {
                 let reply = "";
                 const lowerQuery = query.toLowerCase();
 
-                // Advanced keyword matcher routing
+                // Check structured dictionary mappings
                 const match = knowledgeMatrix.find(item => 
                     item.keywords.some(keyword => lowerQuery.includes(keyword))
                 );
@@ -473,11 +473,12 @@
                 if (match) {
                     reply = match.response;
                 } else {
-                    reply = genericResponses[Math.floor(Math.random() * genericResponses.length)].reply;
+                    // Pull fallback string directly (Fixed index crash point)
+                    reply = genericResponses[Math.floor(Math.random() * genericResponses.length)];
                 }
 
-                // Append to Log Panel dynamically
-                if(query.length > 5) {
+                // 4. Dynamically append queries to sidebar log history
+                if (query.length > 5) {
                     const logContainer = document.getElementById('log-container');
                     const newLog = document.createElement('div');
                     newLog.className = 'history-item';
@@ -486,14 +487,14 @@
                     logContainer.prepend(newLog);
                 }
 
-                // Render AI Output
+                // 5. Render AI Response Box to Stream
                 stream.innerHTML += `<div class="message ai">${reply}</div>`;
                 stream.scrollTop = stream.scrollHeight;
                 
-                // Return Black Hole to equilibrium state
+                // 6. Reset visual center core to resting states
                 singularity.style.opacity = "0.08";
                 singularity.style.transform = "translate(-50%, -50%) scale(1)";
-            }, 550);
+            }, 600);
         }
 
         function escapeHtml(text) {
